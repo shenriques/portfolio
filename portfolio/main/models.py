@@ -6,6 +6,26 @@ from ckeditor.fields import RichTextField
 
 ''' ATTRIBUTES '''
 
+class Media(models.Model):
+
+    class Meta:
+        verbose_name_plural = 'Media Files'
+        verbose_name = 'Media'
+        ordering = ["name"]
+	
+    image = models.ImageField(blank=True, null=True, upload_to="media")
+    url = models.URLField(blank=True, null=True)
+    name = models.CharField(max_length=200, blank=True, null=True)
+    is_image = models.BooleanField(default=True)
+
+    def save(self, *args, **kwargs):
+        if self.url:
+            self.is_image = False
+        super(Media, self).save(*args, **kwargs)
+        
+    def __str__(self):
+        return self.name
+
 class Skill(models.Model):
     class Meta:
         verbose_name_plural = 'Skills'
