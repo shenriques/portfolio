@@ -50,3 +50,38 @@ class Certificate(models.Model):
 
     def __str__(self):
         return self.name
+
+
+''' USERS '''
+
+class UserProfile(models.Model):
+
+    class Meta:
+        verbose_name_plural = 'User Profiles'
+        verbose_name = 'User Profile'
+    
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    avatar = models.ImageField(blank=True, null=True, upload_to="avatar")
+    title = models.CharField(max_length=200, blank=True, null=True)
+    bio = models.TextField(blank=True, null=True)
+    skills = models.ManyToManyField(Skill, blank=True)
+    cv = models.FileField(blank=True, null=True, upload_to="cv")
+
+    def __str__(self):
+        return f'{self.user.first_name} {self.user.last_name}'
+
+
+class ContactProfile(models.Model):
+    
+    class Meta:
+        verbose_name_plural = 'Contact Profiles'
+        verbose_name = 'Contact Profile'
+        ordering = ["timestamp"]
+        
+    timestamp = models.DateTimeField(auto_now_add=True)
+    name = models.CharField(verbose_name="Name",max_length=100)
+    email = models.EmailField(verbose_name="Email")
+    message = models.TextField(verbose_name="Message")
+
+    def __str__(self):
+        return f'{self.name}'
