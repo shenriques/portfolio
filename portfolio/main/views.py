@@ -63,3 +63,16 @@ class BlogDetailView(generic.DetailView):
 	# shows the entry that has the slug in the url
 	template_name = "main/blog-detail.html"
 
+# Contact page
+class ContactView(generic.FormView):
+	template_name = "main/contact.html"
+	form_class = ContactForm
+	# where users get redirected to if the message sent
+	success_url = "/"
+	
+	def form_valid(self, form):
+		# save the form before showing success message
+		form.save()
+		messages.success(self.request, 'Thanks for the message! I\'ll be in touch :)')
+		return super().form_valid(form)
+
