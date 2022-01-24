@@ -69,7 +69,7 @@ class Certificate(models.Model):
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.name
+        return self.title
 
 
 ''' USERS '''
@@ -131,11 +131,11 @@ class BlogPost(models.Model):
     # check if it has a slug before saving, if not
     def save(self, *args, **kwargs):
         if not self.id: # 1) 'if its a new object'
-            self.slug = slugify(self.name) # 2) use lowercase / underscored name to create slug
+            self.slug = slugify(self.title) # 2) use lowercase / underscored title to create slug
         super(BlogPost, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.name
+        return self.title
 
     def get_absolute_url(self):
         return f"/blog/{self.slug}"
@@ -156,11 +156,11 @@ class PortfolioEntry(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.id:
-            self.slug = slugify(self.name)
+            self.slug = slugify(self.title)
         super(PortfolioEntry, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.name
+        return self.title
 
     def get_absolute_url(self):
         return f"/portfolio/{self.slug}"
