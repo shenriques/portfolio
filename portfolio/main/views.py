@@ -30,3 +30,21 @@ class IndexView(generic.TemplateView):
 		context["portfolio_entries"] = portfolio_entries
 		
 		return context
+
+# Portfolio page
+class PortfolioView(generic.ListView):
+	model = PortfolioEntry
+	template_name = "main/portfolio.html"
+	# show the first 10 entries
+	paginate_by = 10
+
+	def get_queryset(self):
+		# only retrieve active entries
+		return super().get_queryset().filter(is_active=True)
+
+
+class PortfolioDetailView(generic.DetailView):
+	model = PortfolioEntry
+	# shows the entry that has the slug in the url
+	template_name = "main/portfolio-detail.html"
+
