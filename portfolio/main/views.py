@@ -48,3 +48,18 @@ class PortfolioDetailView(generic.DetailView):
 	# shows the entry that has the slug in the url
 	template_name = "main/portfolio-detail.html"
 
+# Blog page
+class BlogView(generic.ListView):
+	model = BlogPost
+	template_name = "main/blog.html"
+	paginate_by = 10
+
+	def get_queryset(self):
+		return super().get_queryset().filter(is_active=True)
+
+
+class BlogDetailView(generic.DetailView):
+	model = BlogPost
+	# shows the entry that has the slug in the url
+	template_name = "main/blog-detail.html"
+
