@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.views import generic
 from . forms import ContactForm
 from . models import (
+		UniNote,
 		UserProfile,
 		BlogPost,
 		PortfolioEntry,
@@ -62,6 +63,20 @@ class BlogDetailView(generic.DetailView):
 	model = BlogPost
 	# shows the entry that has the slug in the url
 	template_name = "main/blog-detail.html"
+
+# Uni Notes page
+class UniNoteView(generic.ListView):
+	model = UniNote
+	template_name = "main/uninotes.html"
+	paginate_by = 10
+
+	def get_queryset(self):
+		return super().get_queryset()
+
+
+class UniNoteDetailView(generic.DetailView):
+	model = UniNote
+	template_name = "main/uninote-detail.html"
 
 # Contact page
 class ContactView(generic.FormView):
