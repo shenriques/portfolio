@@ -50,6 +50,7 @@ class MediaAdmin(admin.ModelAdmin):
 @admin.register(UniNote)
 class UniNoteAdmin(admin.ModelAdmin):
     list_display = ('id', 'title')
+    readonly_fields = ('slug',)
 
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
