@@ -8,7 +8,9 @@ from . models import (
     PortfolioEntry,
     BlogPost,
     Certificate,
-    Skill
+    Skill,
+    UniNote,
+    Tag
 )
 
 @admin.register(UserProfile)
@@ -43,4 +45,12 @@ class TestimonialAdmin(admin.ModelAdmin):
 
 @admin.register(Media)
 class MediaAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name')
+
+@admin.register(UniNote)
+class UniNoteAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title')
+
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
     list_display = ('id', 'name')
