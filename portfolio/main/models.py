@@ -40,6 +40,18 @@ class Skill(models.Model):
     def __str__(self):
         return self.name
 
+
+class Tag(models.Model):
+    class Meta:
+        verbose_name_plural = 'Tags'
+        verbose_name = 'Tag'
+    
+    # provides another way to search uni notes
+    name = models.CharField(max_length=200, blank=True, null=True) # e.g. 'php', 'class diagrams', 'web servers' etc 
+
+    def __str__(self):
+        return self.name
+
 class Testimonial(models.Model):
 
     class Meta:
@@ -109,6 +121,35 @@ class ContactProfile(models.Model):
         return f'{self.name}'
 
 ''' CONTENT '''
+
+class UniNote(models.Model):
+
+    class Meta:
+        verbose_name_plural = 'Uni Notes'
+        verbose_name = 'Uni Note'
+        ordering = ["date"]
+
+    date = models.DateTimeField(blank=True, null=True)
+    semester = models.IntegerField(blank=True, null=True)
+    year_of_study = models.IntegerField(blank=True, null=True)
+    module = models.CharField(max_length=500, blank=True, null=True)
+    lecture_number = models.IntegerField(blank=True, null=True)
+    title = models.CharField(max_length=200, blank=True, null=True)
+    body = RichTextField(blank=True, null=True)
+    tags = models.ManyToManyField(Tag, blank=True)
+    slug = models.SlugField(null=True, blank=True)
+
+    # check if it has a slug before saving, if not
+    def save(self, *args, **kwargs):
+        if not self.id: # 1) 'if its a new object'
+            self.slug = slugify(self.title) # 2) use lowercase / underscored title to create slug
+        super(UniNote, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return f"/uninote/{self.slug}"
 
 class BlogPost(models.Model):
 
