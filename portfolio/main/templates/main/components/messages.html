@@ -1,0 +1,12 @@
+{% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li>
+                {%  if message.tags %}
+                    <!-- alert pops up on screen with message -->
+                    <script> alert("{{ mesage }}") </script>    
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
