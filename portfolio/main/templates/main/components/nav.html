@@ -19,11 +19,11 @@ Start Navigation Bar
             <div class="navCollapseCol">
                 <div class="navCol">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="uninotes.html">Uni Notes</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="{% url 'main:' %}">Home</a></li>
+                    <li><a href="{% url 'main:portfolio' %}">Portfolio</a></li>
+                    <li><a href="{% url 'main:uninotes' %}">Uni Notes</a></li>
+                    <li><a href="{% url 'main:blog' %}">Blog</a></li>
+                    <li><a href="{% url 'main:contact' %}">Contact</a></li>
                 </ul>
                 </div>
             </div>
