@@ -8,8 +8,11 @@
 
     <title>Home</title>
     <meta name="author" content="Did Coding Limited & James Granger Design">
-    <link rel="canonical" href=""/>
-    <link rel="home" href=""/>
+    
+    <!-- give the context processor access to request path-->
+    <link rel="canonical" href="{{request.path}}"/>
+    <!--  go to urls of app called main, the url named home-->
+    <link rel="home" href="{% url 'main:home' %}"/>
     <meta name="description" content="">
     <meta name="keywords" content="">
 
