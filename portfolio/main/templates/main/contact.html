@@ -14,13 +14,14 @@
 <!-- ================================
 Start Content
 ================================= -->
+{% block content %}
 <section>
   <div class="innerPageBannerCol">
     <div class="container">
       <div class="row g-4 g-md-3  align-items-center">
         <div class="col-md-6">
           <div class="bannerContent">
-            <h1 class="xlTitle pb-md-3">Contact us below</h1>
+            <h1 class="xlTitle pb-md-3">Get in Touch!</h1>
           </div>
         </div>
       </div>
@@ -33,13 +34,13 @@ Start Content
     <div class="container">
         <form id="contactForm">
             <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your name..">
+            <input type="text" id="name" name="name" placeholder="Your name...">
 
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Your email..">
+            <input type="email" id="email" name="email" placeholder="Your email...">
 
             <label for="subject">Message</label>
-            <textarea id="message" name="message" placeholder="Write something.." rows="6"></textarea>
+            <textarea id="message" name="message" placeholder="Write something..." rows="6"></textarea>
 
             <input class='btn btnPrimary' type="submit" value="Submit">
         </form>
@@ -49,5 +50,5 @@ Start Content
 <!-- ================================
 End Content
 ================================= -->
-    
+{% endblock %}
 
