@@ -54,32 +54,26 @@ Start Content
         <div class="col-md-auto">
           <div class="keySkillCol">
             <h4 class="smTitle pb-3">Key Skills</h4>
+            {% for skill in me.userprofile.skills.all %}
+            {% if skill.is_key_skill %}
             <div class="keySkillCard">
               <div class="ksIconCol">
                 <img src="{% static 'images/key-skill-icon-1.svg' %}"alt="...">
               </div>
-              <span class="ksText">Key Skill 1</span>
+              <span class="ksText">{{ skill.name }}</span>
             </div>
-            <div class="keySkillCard">
-              <div class="ksIconCol">
-                <img src="{% static 'images/key-skill-icon-2.svg' %}"alt="...">
-              </div>
-              <span class="ksText">Key Skill 2</span>
-            </div>
-            <div class="keySkillCard">
-              <div class="ksIconCol">
-                <img src="{% static 'images/key-skill-icon-3.svg' %}"alt="...">
-              </div>
-              <span class="ksText">Key Skill 3</span>
-            </div>
-          </div>
+            {% endif %}
+            {% endfor %}
+          </div> 
         </div>
         <div class="col-md">
           <h4 class="smTitle pb-3">Coding Skills</h4>
           <div class="progressCol">
             <div class="progressCard">
+              {% for skill in me.userprofile.skills.all %}
+              {% if not skill.is_key_still %}
               <div class="progressCol">
-                <span class="progressLbl">Key Skill 1</span>
+                <span class="progressLbl">{{ skill.name }}</span>
                 <div class="row g-2 align-items-center">
                   <div class="col">
                     <div class="progress progressStyle">
@@ -87,49 +81,12 @@ Start Content
                     </div>
                   </div>
                   <div class="col-auto">
-                    <span class="pLbl">95%</span>
+                    <span class="pLbl">{{ skill.score }}%</span>
                   </div>
                 </div>
               </div>
-              <div class="progressCol">
-                <span class="progressLbl">Key Skill 2</span>
-                <div class="row g-2 align-items-center">
-                  <div class="col">
-                    <div class="progress progressStyle">
-                      <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                  <div class="col-auto">
-                    <span class="pLbl">85%</span>
-                  </div>
-                </div>
-              </div>
-              <div class="progressCol">
-                <span class="progressLbl">Key Skill 3</span>
-                <div class="row g-2 align-items-center">
-                  <div class="col">
-                    <div class="progress progressStyle">
-                      <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                  <div class="col-auto">
-                    <span class="pLbl">70%</span>
-                  </div>
-                </div>
-              </div>
-              <div class="progressCol">
-                <span class="progressLbl">Key Skill 4</span>
-                <div class="row g-2 align-items-center">
-                  <div class="col">
-                    <div class="progress progressStyle">
-                      <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                  <div class="col-auto">
-                    <span class="pLbl">65%</span>
-                  </div>
-                </div>
-              </div>
+              {% endif %} 
+              {% endfor %}
             </div>
           </div>
         </div>
