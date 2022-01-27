@@ -28,15 +28,16 @@ Start Content
         </div>
         <div class="col-md">
           <div class="bannerContent">
-            <h1 class="xlTitle pb-3">Hi! I’m Shani, <br>an Apprentice Developer</h1>
-            <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
+            <!-- '|title' = apply title case  -->
+            <h1 class="xlTitle pb-3">Hi! I’m {{ me.first_name|title }}, <br> a {{ me.userprofile.title }} </h1>
+            <p> {{ me.userprofile.bio }} </p>
             <div class="bannerBtnCol">
               <div class="row">
                 <div class="col-auto">
-                  <a download href="javascript:void(0)" class="btn btnPrimary">Download Resume</a>
+                  <a download href="{{ me.userprofile.cv.url }}" class="btn btnPrimary">Download CV</a>
                 </div>
                 <div class="col-auto">
-                  <a href="contact.html" class="btn btnOutline">Contact</a>
+                  <a href="{% url 'main:contact' %}" class="btn btnOutline">Contact Me</a>
                 </div>
               </div>
             </div>
