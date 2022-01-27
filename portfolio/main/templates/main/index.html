@@ -11,12 +11,11 @@
 <!-- Add JS -->
 {% block extend_footer %} {% endblock %}
 
-{% block content %} 
-
 <!-- content gets put into content section of base -->
 <!-- ================================
 Start Content
 ================================= -->
+{% block content %} 
 <section>
   <div class="bannerSection">
     <div class="container">
@@ -153,42 +152,22 @@ Start Content
       <div class="sliderOuter">
         <div class="swiper certificatesSlider">
           <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <div class="cardStyle1">
-                <h4 class="mdTitle cs1Title">
-                  <a href="javascript:void(0)">HTML, CSS, and Javascript for Web Developers</a>
-                </h4>
-                <ul class="cardOptionCol">
-                  <li>08 Oct 2021</li>
-                  <li>Coursera</li>
-                </ul>
-                <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="cardStyle1">
-                <h4 class="mdTitle cs1Title">
-                  <a href="javascript:void(0)">IBM Full Stack Cloud Developer</a>
-                </h4>
-                <ul class="cardOptionCol">
-                  <li>08 Oct 2021</li>
-                  <li>Coursera</li>
-                </ul>
-                <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="cardStyle1">
-                <h4 class="mdTitle cs1Title">
-                  <a href="javascript:void(0)">IBM Full Stack Cloud Developer</a>
-                </h4>
-                <ul class="cardOptionCol">
-                  <li>08 Oct 2021</li>
-                  <li>Coursera</li>
-                </ul>
-                <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
-              </div>
-            </div>
+            {% for certificate in certificates %}
+              {% if certificate.is_active %}
+                <div class="swiper-slide">
+                  <div class="cardStyle1">
+                    <h4 class="mdTitle cs1Title">
+                      <a href="javascript:void(0)">{{ certificate.title }}</a>
+                    </h4>
+                    <ul class="cardOptionCol">
+                      <li>{{ certificate.date }}</li>
+                      <li>{{ certificate.issued_by }}</li>
+                    </ul>
+                    <p>{{ certificate.description }}</p>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
           </div>
         </div>            
         <div class="cert-swiper-button-next swiper-button-next swiperBtnStyle"></div>
