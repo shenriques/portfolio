@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Heebo:wght@400;500;700;900&display=swap');
 /* font-family: 'Courier Prime', monospace;
 font-family: 'Heebo', sans-serif; */
-:root {
+/* :root {
   --primaryColor: #9C07B6;
   --primaryDarkColor: #3D0048;
   --primaryHoverColor: #900AA8;
@@ -14,7 +14,23 @@ font-family: 'Heebo', sans-serif; */
   --bold: 700;
   --black: 900;
   --lightBg: #F1F1F1;
+} */
+
+:root {
+  --primaryColor: #92BFB1;
+  --primaryDarkColor: #2D3047;
+  --primaryHoverColor: #DAD6D6;
+  --secondaryColor: #F4AC45;
+  --baseColor: #565656;
+  --baseFont: 'Heebo', sans-serif;
+  --titleFont: 'Courier Prime', monospace;
+  --regular: 400;
+  --medium: 500;
+  --bold: 700;
+  --black: 900;
+  --lightBg: #F1F1F1;
 }
+
 html {
   scroll-behavior: smooth;
 }
